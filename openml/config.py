@@ -171,7 +171,7 @@ def get_server_base_url() -> str:
     -------
     str
     """
-    domain, path = server.split("/api", maxsplit=1)
+    domain, _path = server.split("/api", maxsplit=1)
     return domain.replace("api", "www")
 
 
@@ -256,8 +256,8 @@ class ConfigurationForExamples:
         global server  # noqa: PLW0603
         global apikey  # noqa: PLW0603
 
-        server = cast(str, cls._last_used_server)
-        apikey = cast(str, cls._last_used_key)
+        server = cast("str", cls._last_used_server)
+        apikey = cast("str", cls._last_used_key)
         cls._start_last_called = False
 
 
@@ -514,10 +514,10 @@ def overwrite_config_context(config: dict[str, Any]) -> Iterator[_Config]:
 
 __all__ = [
     "get_cache_directory",
+    "get_config_as_dict",
     "set_root_cache_directory",
     "start_using_configuration_for_example",
     "stop_using_configuration_for_example",
-    "get_config_as_dict",
 ]
 
 _setup()
